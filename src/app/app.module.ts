@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SearchBarModule } from './shared-components/search-bar/search-bar.module';
+import { TableModule } from './shared-components/table/table.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SearchBarModule
+    SearchBarModule,
+    TableModule
   ],
   bootstrap: [AppComponent]
 })

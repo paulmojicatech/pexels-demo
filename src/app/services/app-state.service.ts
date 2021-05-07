@@ -15,7 +15,10 @@ export class AppStateService {
     gridItems: [],
     photos: [],
     currentPage: 0,
-    errorMessage: null
+    errorMessage: null,
+    nextPageUrl: '',
+    previousPageUrl: '',
+    totalResults: 0
   };
 
   private _viewModelSub$ = new BehaviorSubject<AppViewModel>(this.INITIAL_STATE);
@@ -36,12 +39,17 @@ export class AppStateService {
     /* We fetch our photos, update our state, then unsubscribe
        to the created subscription to prevent memory leaks
     */
-    this._pexelsHttpSvc.fetchPhotos(nextPage, searchQuery).subscribe(photos => {
-      this._viewModelSub$.next({
-        ...currentState,
-        photos,
-        currentPage: !!photos.length ? currentPage + 1 : 1
-      });
+    this._pexelsHttpSvc.fetchPhotos(nextPage, searchQuery).subscribe(fetchResponse => {
+      const { nextPageUrl, previousPageUrl, totalResults } = fetchResponse;
+        this._viewModelSub$.next({
+          ...currentState,
+          photos: fetchResponse.photos,
+          nextPageUrl,
+          previousPageUrl,
+          totalResults,
+          currentPage: !!photos.length ? currentPage + 1 : 1
+        });
+      
     });
   }
 

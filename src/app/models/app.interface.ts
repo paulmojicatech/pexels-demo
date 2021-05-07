@@ -4,6 +4,18 @@ export interface AppViewModel {
     gridItems: unknown[];
     photos: Photo[];
     errorMessage: string;
+    totalResults: number;
+    nextPageUrl: string;
+    previousPageUrl: string;
+}
+
+export interface PexelsApiResponse {
+    page: number;
+    per_page: number;
+    photos: Photo[];
+    next_page: string;
+    previous_page: string;
+    total_results: number;
 }
 
 export interface Photo {
