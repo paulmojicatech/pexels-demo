@@ -30,7 +30,7 @@ export class SearchBarComponent implements AfterViewInit {
         /* This will not create a memory leak as this component is never
        destroyed so the subscription is only created one time.
     */
-        fromEvent(this.searchField.nativeElement, 'keypress')
+        fromEvent(this.searchField.nativeElement, 'keydown')
             .pipe(debounceTime(250))
             .subscribe(() => {
                 const searchValue = this.searchField.nativeElement.value;
