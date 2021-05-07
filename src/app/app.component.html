@@ -1,1 +1,5 @@
-<pmt-search-bar></pmt-search-bar>
+<pmt-search-bar (searchValueChanged)="appStateSvc.handleSearchInputChanged($event)"></pmt-search-bar>
+
+<div *ngIf="viewModel$ | async as viewModel">
+    {{ viewModel | json }}
+</div>
