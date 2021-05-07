@@ -1,13 +1,23 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
+
+import { SearchBarModule } from './shared-components/search-bar/search-bar.module';
+
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        SearchBarModule
+      ],
       declarations: [
         AppComponent
       ],
-    }).compileComponents();
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ]
+    })
   }));
 
   it('should create the app', () => {
@@ -16,16 +26,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'pexels-demo'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('pexels-demo');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('pexels-demo app is running!');
-  });
 });

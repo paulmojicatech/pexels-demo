@@ -1,0 +1,9 @@
+.toolbar-section {
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    mat-form-field {
+        padding-top: 1.25rem;
+        width: 20%;
+    }
+}
