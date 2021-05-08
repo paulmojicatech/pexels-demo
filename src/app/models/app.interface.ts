@@ -1,7 +1,9 @@
+import { TableMetadata } from "../shared-components/table/models/table.interface";
+
 export interface AppViewModel {
     searchQuery: string;
     currentPage: number;
-    gridItems: unknown[];
+    tableMetadata: TableMetadata;
     photos: Photo[];
     errorMessage: string;
     totalResults: number;

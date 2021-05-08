@@ -4,12 +4,13 @@ import {
     Component,
     ElementRef,
     EventEmitter,
+    OnDestroy,
     Output,
     ViewChild
 } from '@angular/core';
 
-import { fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { fromEvent, Subject } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'pmt-search-bar',
@@ -17,9 +18,10 @@ import { debounceTime } from 'rxjs/operators';
     styleUrls: ['./search-bar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SearchBarComponent implements AfterViewInit {
+export class SearchBarComponent implements AfterViewInit, OnDestroy {
     @ViewChild('searchField')
     searchField: ElementRef<HTMLInputElement>;
+    private _componentDestroyed$ = new Subject<void>();
 
     @Output()
     searchValueChanged = new EventEmitter<string>();
@@ -27,16 +29,20 @@ export class SearchBarComponent implements AfterViewInit {
     constructor() {}
 
     ngAfterViewInit(): void {
-        /* This will not create a memory leak as this component is never
-       destroyed so the subscription is only created one time.
-    */
         fromEvent(this.searchField.nativeElement, 'keydown')
-            .pipe(debounceTime(250))
+            .pipe(
+                debounceTime(250),
+                takeUntil(this._componentDestroyed$)
+            )
             .subscribe(() => {
                 const searchValue = this.searchField.nativeElement.value;
                 if (!!searchValue) {
                     this.searchValueChanged.emit(searchValue);
                 }
             });
+    }
+
+    ngOnDestroy(): void {
+        this._componentDestroyed$.next();
     }
 }
