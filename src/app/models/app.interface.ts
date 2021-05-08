@@ -1,9 +1,21 @@
+import { TableMetadata } from "../shared-components/table/models/table.interface";
+
 export interface AppViewModel {
     searchQuery: string;
     currentPage: number;
-    gridItems: unknown[];
+    tableMetadata: TableMetadata;
     photos: Photo[];
-    errorMessage: string;
+    totalResults: number;
+    nextPageUrl: string;
+}
+
+export interface PexelsApiResponse {
+    page: number;
+    per_page: number;
+    photos: Photo[];
+    next_page: string;
+    previous_page: string;
+    total_results: number;
 }
 
 export interface Photo {

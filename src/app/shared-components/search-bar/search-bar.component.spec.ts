@@ -44,7 +44,7 @@ describe('SearchBarComponent', () => {
         const searchEl: HTMLInputElement = fixture.nativeElement.querySelector(
             'input'
         );
-        searchEl.dispatchEvent(new KeyboardEvent('keypress', { key: 'a' }));
+        searchEl.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
         searchEl.value = 'a';
         tick(500);
         fixture.detectChanges();
@@ -56,11 +56,11 @@ describe('SearchBarComponent', () => {
         const searchEl: HTMLInputElement = fixture.nativeElement.querySelector(
             'input'
         );
-        searchEl.dispatchEvent(new KeyboardEvent('keypress', { key: 'a' }));
+        searchEl.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
         searchEl.value = 'a';
         tick(100);
         flushMicrotasks();
-        searchEl.dispatchEvent(new KeyboardEvent('keypress', { key: 'a' }));
+        searchEl.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
         searchEl.value = 'aa';
         tick(250);
         fixture.detectChanges();
@@ -72,7 +72,7 @@ describe('SearchBarComponent', () => {
         const searchEl: HTMLInputElement = fixture.nativeElement.querySelector(
             'input'
         );
-        searchEl.dispatchEvent(new KeyboardEvent('keypress', { key: 'a' }));
+        searchEl.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
         searchEl.value = 'a';
         tick(100);
         flushMicrotasks();

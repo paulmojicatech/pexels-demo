@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   pexelsApiUrl: 'https://api.pexels.com/v1/',
-  apiKey: '563492ad6f91700001000001cf90ff95995f419da77b43146fa201e6',
+  apiKey: '563492ad6f91700001000001cb7f575326554d05847a26f209c6477f',
   itemsPerPage: 30
 };
 
