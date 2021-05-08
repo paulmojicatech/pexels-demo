@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 
 import { fromEvent, Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { debounceTime, takeUntil, throttleTime } from 'rxjs/operators';
 
 @Component({
     selector: 'pmt-search-bar',
@@ -31,7 +31,7 @@ export class SearchBarComponent implements AfterViewInit, OnDestroy {
     ngAfterViewInit(): void {
         fromEvent(this.searchField.nativeElement, 'keydown')
             .pipe(
-                debounceTime(250),
+                throttleTime(250),
                 takeUntil(this._componentDestroyed$)
             )
             .subscribe(() => {

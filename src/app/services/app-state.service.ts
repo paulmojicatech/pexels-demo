@@ -7,9 +7,7 @@ import { AppViewModel, Photo } from '../models/app.interface';
 import { PexelsHttpService } from '../services/pexels-http.service';
 import { TableColumnMetadata, TableMetadata, TableRowDataType, TableRowMetadata } from '../shared-components/table/models/table.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AppStateService {
 
   readonly INITIAL_STATE: AppViewModel = {

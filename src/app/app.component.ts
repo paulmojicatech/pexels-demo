@@ -1,5 +1,7 @@
+import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { merge, Observable } from 'rxjs';
+import { ignoreElements, tap } from 'rxjs/operators';
 import { AppViewModel } from './models/app.interface';
 
 import { AppStateService } from './services/app-state.service';
@@ -8,15 +10,21 @@ import { AppStateService } from './services/app-state.service';
   selector: 'pmt-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  // providers: [ AppStateService ] // this is a localized service for this component only
+  providers: [ AppStateService ] // this is a localized service for this component only
 })
 export class AppComponent implements OnInit {
 
   viewModel$: Observable<AppViewModel>;
 
-  constructor(public appStateSvc: AppStateService) {}
+  constructor(public appStateSvc: AppStateService, private _scrollDispatcher: ScrollDispatcher) {}
 
   ngOnInit(): void {
-    this.viewModel$ = this.appStateSvc.getViewModel();
+    const scrollEv$ = this._scrollDispatcher.scrolled(500).pipe(
+      tap(() => {
+        console.log();
+      }),
+      ignoreElements()
+    )
+    this.viewModel$ = merge(this.appStateSvc.getViewModel(), scrollEv$);
   }
 }

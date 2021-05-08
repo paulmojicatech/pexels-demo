@@ -11,7 +11,7 @@
             </span>
         </div>
     </div>
-    <div class="viewer-section">
+    <div cdkScrollable class="viewer-section">
         <span *ngFor="let photo of viewModel.photos">
             <img [src]="photo.src.tiny" />
         </span>
