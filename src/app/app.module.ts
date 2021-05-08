@@ -15,8 +15,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SearchBarModule,
-    TableModule
+    SearchBarModule
   ],
   bootstrap: [AppComponent]
 })
