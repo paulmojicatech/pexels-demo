@@ -1,7 +1,7 @@
 import { CdkVirtualScrollViewport, ScrollDispatcher } from '@angular/cdk/scrolling';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { merge, Observable } from 'rxjs';
-import { ignoreElements, tap } from 'rxjs/operators';
+import { debounceTime, ignoreElements, tap, throttleTime } from 'rxjs/operators';
 import { AppViewModel } from './models/app.interface';
 
 import { AppStateService } from './services/app-state.service';
@@ -22,11 +22,9 @@ export class AppComponent implements OnInit {
   constructor(public appStateSvc: AppStateService, private _scrollDispatcher: ScrollDispatcher) {}
 
   ngOnInit(): void {
-    const scrollEv$ = this._scrollDispatcher.scrolled(500).pipe(
+    const scrollEv$ = this._scrollDispatcher.scrolled().pipe(
+      debounceTime(1000),
       tap(() => {
-        const bottom = this.viewportContainer?.measureScrollOffset();
-        const start = this.viewportContainer?.getOffsetToRenderedContentStart();
-        console.log(`Start: ${start}`, `Bottom: ${bottom}`);
         this.appStateSvc.dispatchFetch();
       }),
       ignoreElements()

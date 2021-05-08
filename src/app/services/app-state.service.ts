@@ -40,7 +40,6 @@ export class AppStateService {
        after execution
     */
     this._pexelsHttpSvc.fetchPhotos(1, searchQuery).pipe(
-      throttleTime(1000),
       take(1),
       catchError((err: string) => this.handleError(err))
     ).subscribe(fetchResponse => {
@@ -63,7 +62,6 @@ export class AppStateService {
     const { currentPage, nextPageUrl, searchQuery, photos } = currentState;
     if (!!nextPageUrl) {
       this._pexelsHttpSvc.fetchPhotos(currentPage, searchQuery).pipe(
-        debounceTime(1000),
         catchError(err => this.handleError(err))
       ).subscribe((photosResp) => {
         const udpatedTableMetadata = this.createTableMetadata(photosResp.photos);
