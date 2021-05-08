@@ -10,6 +10,9 @@ describe('AppStateService', () => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule
+      ],
+      providers: [
+        AppStateService
       ]
     });
     service = TestBed.inject(AppStateService);

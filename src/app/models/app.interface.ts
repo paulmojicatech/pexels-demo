@@ -5,10 +5,8 @@ export interface AppViewModel {
     currentPage: number;
     tableMetadata: TableMetadata;
     photos: Photo[];
-    errorMessage: string;
     totalResults: number;
     nextPageUrl: string;
-    previousPageUrl: string;
 }
 
 export interface PexelsApiResponse {

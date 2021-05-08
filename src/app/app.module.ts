@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ScrollingModule} from '@angular/cdk/scrolling';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SearchBarModule } from './shared-components/search-bar/search-bar.module';
-import { TableModule } from './shared-components/table/table.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     HttpClientModule,
     ScrollingModule,
+    MatSnackBarModule,
     SearchBarModule
   ],
   bootstrap: [AppComponent]

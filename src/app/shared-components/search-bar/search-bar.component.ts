@@ -31,7 +31,7 @@ export class SearchBarComponent implements AfterViewInit, OnDestroy {
     ngAfterViewInit(): void {
         fromEvent(this.searchField.nativeElement, 'keydown')
             .pipe(
-                throttleTime(250),
+                debounceTime(250),
                 takeUntil(this._componentDestroyed$)
             )
             .subscribe(() => {

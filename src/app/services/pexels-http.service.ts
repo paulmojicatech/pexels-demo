@@ -16,7 +16,7 @@ export class PexelsHttpService {
 
     constructor(private _httpClient: HttpClient) {}
 
-    fetchPhotos(page: number, searchQuery: string): Observable<{ nextPageUrl: string; previousPageUrl: string; totalResults: number; photos: Photo[]}> {
+    fetchPhotos(page: number, searchQuery: string): Observable<{ nextPageUrl: string; previousPageUrl: string; totalResults: number; photos: Photo[], currentPage: number }> {
         const headers = {
             Authorization: this._apiKey
         };
@@ -27,15 +27,19 @@ export class PexelsHttpService {
             )
             .pipe(
                 map((httpResp) => {
-                    const { photos, next_page, previous_page, total_results } = httpResp;
+                    const { photos, next_page, previous_page, total_results, page } = httpResp;
                     return {
                         nextPageUrl: next_page,
                         previousPageUrl: previous_page,
                         totalResults: total_results,
-                        photos
+                        photos,
+                        currentPage: page
                     };
                 }),
-                catchError((err) => throwError(err))
+                catchError((err) => {
+                    const error = err?.error?.error ?? 'An error occurred fetching photos';
+                    return throwError(error);
+                })
             );
     }
 }
