@@ -40,7 +40,6 @@ export class AppStateService {
        after execution
     */
     this._pexelsHttpSvc.fetchPhotos(1, searchQuery).pipe(
-      take(1),
       catchError((err: string) => this.handleError(err))
     ).subscribe(fetchResponse => {
       const { nextPageUrl, totalResults, currentPage, photos } = fetchResponse;

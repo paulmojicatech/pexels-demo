@@ -1,4 +1,4 @@
-import { PexelsApiResponse } from "../models/app.interface";
+import { AppViewModel, PexelsApiResponse } from "../models/app.interface";
 
 export const PEXELS_MOCK_RESPONSE: PexelsApiResponse = {
     page: 1,
