@@ -1,9 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BehaviorSubject, EMPTY, merge, Observable, Subject, throwError } from 'rxjs';
 import { catchError, debounceTime, map, startWith, switchMap, take, tap, throttleTime } from 'rxjs/operators';
+import { PhotoViewerComponent } from '../components/photo-viewer/photo-viewer.component';
 
 import { AppViewModel, Photo } from '../models/app.interface';
 import { PexelsHttpService } from '../services/pexels-http.service';
@@ -24,7 +26,7 @@ export class AppStateService {
   private _viewModelSub$ = new BehaviorSubject<AppViewModel>(this.INITIAL_STATE);
   viewModel$ = this._viewModelSub$.asObservable();
 
-  constructor(private _pexelsHttpSvc: PexelsHttpService, private _snackBar: MatSnackBar) { }
+  constructor(private _pexelsHttpSvc: PexelsHttpService, private _snackBar: MatSnackBar, private _matDialog: MatDialog) { }
 
   getViewModel(): Observable<AppViewModel> {
     return this.viewModel$.pipe(
@@ -74,6 +76,16 @@ export class AppStateService {
         });
       });
     }
+  }
+
+  openPhotoDetails(id: number): void {
+    const photo = this._viewModelSub$.getValue().photos.find(photoInst => photoInst.id === id);
+    this._matDialog.open(PhotoViewerComponent, {
+      data: {
+        photographer: photo.photographer,
+        imageUrl: photo.src.large
+      }
+    });
   }
 
   private createTableMetadata(photos: Photo[]): TableMetadata {
