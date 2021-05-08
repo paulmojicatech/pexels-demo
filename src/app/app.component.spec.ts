@@ -4,13 +4,15 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { SearchBarModule } from './shared-components/search-bar/search-bar.module';
 import { AppComponent } from './app.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        SearchBarModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        MatSnackBarModule,
+        SearchBarModule
       ],
       declarations: [
         AppComponent
