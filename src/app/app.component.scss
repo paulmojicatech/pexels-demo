@@ -3,9 +3,17 @@
     flex-direction: column;
     align-items: center;
     overflow: scroll;
-    width: 95vw;
-    height: 80vh;
-    span {
-        margin: 3rem;
+    width: 100vw;
+    height: 100vh;
+    .caption-section {
+        margin-top: 1rem;
+        .initial-text {
+            font-size: 2rem;
+        }
     }
+    .viewer-section {
+        img {
+            margin: 3rem;
+        }
+}
 }

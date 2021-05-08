@@ -1,7 +1,19 @@
 <pmt-search-bar (searchValueChanged)="appStateSvc.handleSearchInputChanged($event)"></pmt-search-bar>
 
 <div *ngIf="viewModel$ | async as viewModel" class="main-section">
+    <div class="caption-section">
+        <span class="initial-text">
+            Images    
+        </span>
+        <div>
+            <span>
+                Images Found: {{ viewModel.totalResults }}
+            </span>
+        </div>
+    </div>
+    <div class="viewer-section">
         <span *ngFor="let photo of viewModel.photos">
             <img [src]="photo.src.tiny" />
         </span>
+    </div>
 </div>

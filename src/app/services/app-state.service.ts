@@ -52,7 +52,6 @@ export class AppStateService {
           nextPageUrl,
           previousPageUrl,
           totalResults,
-          currentPage: !!photos.length ? currentPage + 1 : 1,
           tableMetadata
         });
     });
