@@ -8,6 +8,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SearchBarModule } from './shared-components/search-bar/search-bar.module';
 import { AppComponent } from './app.component';
 import { PhotoViewerComponent } from './components/photo-viewer/photo-viewer.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { PhotoViewerComponent } from './components/photo-viewer/photo-viewer.com
     ScrollingModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
     SearchBarModule
   ],
   bootstrap: [AppComponent]

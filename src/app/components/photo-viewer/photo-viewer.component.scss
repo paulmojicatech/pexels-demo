@@ -1,0 +1,13 @@
+.photographer-section {
+    font-size: 1.5rem;
+    height: 3rem;
+}
+
+.action-section {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+    button, a {
+        font-size: 1.15rem;
+    }
+}

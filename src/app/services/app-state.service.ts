@@ -1,10 +1,8 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DomSanitizer } from '@angular/platform-browser';
-import { BehaviorSubject, EMPTY, merge, Observable, Subject, throwError } from 'rxjs';
-import { catchError, debounceTime, map, startWith, switchMap, take, tap, throttleTime } from 'rxjs/operators';
+import { BehaviorSubject, EMPTY, Observable } from 'rxjs';
+import { catchError, startWith } from 'rxjs/operators';
 import { PhotoViewerComponent } from '../components/photo-viewer/photo-viewer.component';
 
 import { AppViewModel, Photo } from '../models/app.interface';

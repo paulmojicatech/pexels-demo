@@ -1,8 +1,17 @@
 <div>
-    <div>
+    <div class="photographer-section">
         {{data.photographer}}
     </div>
-    <div>
+    <div class="photo-section">
         <img [src]="data.imageUrl"/>
+    </div>
+    <div class="action-section">
+        <button (click)="dialogRef.close()" mat-button>
+            Close
+        </button>
+        <a mat-button target="_blank" color="primary" [href]="data.imageUrl" download>
+            Download
+        </a>
+        
     </div>
 </div>
