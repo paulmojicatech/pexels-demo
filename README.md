@@ -1,27 +1,19 @@
-# PexelsDemo
+# Pexels Demo
+## Purpose
+This is a demo application to show how to implement an Angular application to follow the service with a subject pattern.  This pattern promotes the separation of presentational component and functional components.  This also forces components to be immutable and allows us to get performance benefits by using Angular's change detection on push strategy.
+## Components
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
+**App Component**
+This is a functional component.  We a localized state service that builds the view model of the data that  it and its child components need.  It also listens to outputs from its children and calls the localized service to perform the business logic needed.
 
-## Development server
+We also use the Angular CDK to implement a virtual / infinite scroll mechanism that we fetch pictures from the Pexels API via HTTP only when needed.  The localized service is responsible for making that API call.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**Search Bar:**
+This is is a reusable component that is application independent.  It is a presentational component that outputs an event when to the app component when a user types in the search field.
 
-## Code scaffolding
+## Services
+**App State Service**
+This is a localized service for the app component.  It orchestrates all the data that the app component and its children need.  It contains a behavior subject that is updated when events are triggered.  We expose a getViewModel method that the app component calls to get updates any time the behavior subject changes.  The app component consumes the data from the view model via async pipe on the HTML template.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+**Pexels HTTP Service**
+This is the service that makes HTTP calls and returns data back to the App State Service.  We also handle HTTP errors where we throw an error something fails.  Our app component listens for the errors and displays a Material Snack Bar if an HTTP request fails.
