@@ -11,6 +11,9 @@ We also use the Angular CDK to implement a virtual / infinite scroll mechanism t
 **Search Bar:**
 This is is a reusable component that is application independent.  It is a presentational component that outputs an event when to the app component when a user types in the search field.
 
+**Photo Viewer Component**
+This is a simple component that is the ComponentRef for the Angular Material dialog component.  This has displays the selected photo in a larger format and also displays the photographer of the photo.
+
 ## Services
 **App State Service**
 This is a localized service for the app component.  It orchestrates all the data that the app component and its children need.  It contains a behavior subject that is updated when events are triggered.  We expose a getViewModel method that the app component calls to get updates any time the behavior subject changes.  The app component consumes the data from the view model via async pipe on the HTML template.
