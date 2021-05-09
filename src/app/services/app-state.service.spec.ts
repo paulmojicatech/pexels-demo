@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { fakeAsync, flushMicrotasks, TestBed, tick } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { of } from 'rxjs';
 import { MOCK_GRID_ITEMS } from '../mockdata/app-state-mockdata.spec';
@@ -16,7 +17,8 @@ describe('AppStateService', () => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatDialogModule
       ],
       providers: [
         AppStateService

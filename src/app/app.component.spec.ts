@@ -5,6 +5,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { SearchBarModule } from './shared-components/search-bar/search-bar.module';
 import { AppComponent } from './app.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,6 +13,7 @@ describe('AppComponent', () => {
       imports: [
         HttpClientTestingModule,
         MatSnackBarModule,
+        MatDialogModule,
         SearchBarModule
       ],
       declarations: [
