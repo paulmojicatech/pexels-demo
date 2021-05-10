@@ -66,16 +66,21 @@ export class AppStateService {
         ...currentState,
         isLoading: true
       });
-      this._pexelsHttpSvc.fetchPhotos(currentPage, searchQuery).pipe(
+      this._pexelsHttpSvc.fetchPhotos(currentPage + 1, searchQuery).pipe(
         catchError(err => this.handleError(err))
       ).subscribe((photosResp) => {
         const udpatedTableMetadata = this.createTableMetadata(photosResp.photos);
         const updatedPhotos = photos.concat(photosResp.photos);
+        const duplicates = updatedPhotos.filter((photo, index) => {
+          const photoIndex = updatedPhotos.findIndex(photoCopy => photoCopy.id === photo.id);
+          return photoIndex !== index;
+        });
+        console.log('DUPES', duplicates);
         this._viewModelSub$.next({
           ...currentState,
           photos: updatedPhotos, 
           nextPageUrl: photosResp.nextPageUrl, 
-          currentPage: photosResp.currentPage + 1,
+          currentPage: photosResp.currentPage,
           tableMetadata: udpatedTableMetadata,
           isLoading: false
         });
