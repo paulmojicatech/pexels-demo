@@ -19,7 +19,7 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 })
 export class SearchBarComponent implements AfterViewInit, OnDestroy {
     @ViewChild('searchField')
-    searchField: ElementRef<HTMLInputElement>;
+    searchField!: ElementRef<HTMLInputElement>;
     private _componentDestroyed$ = new Subject<void>();
 
     @Output()

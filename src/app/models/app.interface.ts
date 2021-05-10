@@ -3,11 +3,12 @@ import { TableMetadata } from "../shared-components/table/models/table.interface
 export interface AppViewModel {
     searchQuery: string;
     currentPage: number;
-    tableMetadata: TableMetadata;
     photos: Photo[];
     totalResults: number;
     nextPageUrl: string;
     isLoading: boolean;
+    tableMetadata: TableMetadata | null;
+
 }
 
 export interface PexelsApiResponse {

@@ -1,4 +1,4 @@
-import { CdkVirtualScrollViewport, ScrollDispatcher } from '@angular/cdk/scrolling';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { merge, Observable } from 'rxjs';
 
@@ -14,11 +14,11 @@ import { AppStateService } from './services/app-state.service';
 export class AppComponent implements OnInit {
 
   @ViewChild('viewportContainer')
-  viewportContainer: CdkVirtualScrollViewport;
+  viewportContainer!: CdkVirtualScrollViewport;
 
-  viewModel$: Observable<AppViewModel>;
+  viewModel$!: Observable<AppViewModel>;
 
-  constructor(public appStateSvc: AppStateService, private _scrollDispatcher: ScrollDispatcher) {}
+  constructor(public appStateSvc: AppStateService) {}
 
   ngOnInit(): void {
     this.viewModel$ = merge(this.appStateSvc.getViewModel());

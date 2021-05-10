@@ -86,8 +86,8 @@ export class AppStateService {
     const photo = this._viewModelSub$.getValue().photos.find(photoInst => photoInst.id === id);
     this._matDialog.open(PhotoViewerComponent, {
       data: {
-        photographer: photo.photographer,
-        imageUrl: photo.src.large
+        photographer: photo?.photographer,
+        imageUrl: photo?.src.large
       }
     });
   }

@@ -1,3 +1,4 @@
+import { AppViewModel } from '../models/app.interface';
 import {
     TableMetadata,
     TableRowDataType
@@ -32,3 +33,30 @@ export const MOCK_GRID_ITEMS: TableMetadata = {
         }
     ]
 };
+
+export const MOCK_VIEW_MODEL: AppViewModel = {
+    searchQuery: 'a',
+    currentPage: 1,
+    nextPageUrl: 'a',
+    totalResults: 1,
+    photos: [
+        {
+            id: 1,
+            url: 'a',
+            photographer: 'b',
+            src: {
+                original: 'a',
+                tiny:'b',
+                landscape: 'c',
+                portrait: 'd',
+                large: 'e',
+                large2x: 'f',
+                medium: 'g',
+                small: 'h'
+            }
+        }
+    ],
+    tableMetadata: MOCK_GRID_ITEMS,
+    isLoading: false
+
+}
