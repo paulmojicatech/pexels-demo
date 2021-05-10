@@ -1,9 +1,8 @@
 import { CdkVirtualScrollViewport, ScrollDispatcher } from '@angular/cdk/scrolling';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { merge, Observable } from 'rxjs';
-import { debounceTime, ignoreElements, tap, throttleTime } from 'rxjs/operators';
-import { AppViewModel } from './models/app.interface';
 
+import { AppViewModel } from './models/app.interface';
 import { AppStateService } from './services/app-state.service';
 
 @Component({

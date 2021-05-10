@@ -7,10 +7,10 @@ import {
     tick
 } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { SearchBarComponent } from './search-bar.component';
 
 describe('SearchBarComponent', () => {

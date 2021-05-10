@@ -8,9 +8,8 @@ import {
     Output,
     ViewChild
 } from '@angular/core';
-
 import { fromEvent, Subject } from 'rxjs';
-import { debounceTime, takeUntil, throttleTime } from 'rxjs/operators';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'pmt-search-bar',

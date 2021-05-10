@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
-import { Observable, throwError } from 'rxjs';
 import { PexelsApiResponse, Photo } from '../models/app.interface';
-import { catchError, delay, map, take, tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'

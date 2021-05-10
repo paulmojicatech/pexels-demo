@@ -1,12 +1,12 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { fakeAsync, flushMicrotasks, TestBed, tick } from '@angular/core/testing';
+import { of } from 'rxjs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { of } from 'rxjs';
+
 import { MOCK_GRID_ITEMS } from '../mockdata/app-state-mockdata.spec';
 import { PARSED_MOCK_RESPONSE } from '../mockdata/pexels-http-mockdata.spec';
 import { AppViewModel } from '../models/app.interface';
-
 import { AppStateService } from './app-state.service';
 import { PexelsHttpService } from './pexels-http.service';
 

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, EMPTY, Observable } from 'rxjs';
 import { catchError, startWith } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import { PhotoViewerComponent } from '../components/photo-viewer/photo-viewer.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { PhotoViewerComponent } from '../components/photo-viewer/photo-viewer.component';
 import { AppViewModel, Photo } from '../models/app.interface';
 import { PexelsHttpService } from '../services/pexels-http.service';
 import { TableColumnMetadata, TableMetadata, TableRowDataType, TableRowMetadata } from '../shared-components/table/models/table.interface';

@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { fakeAsync, flushMicrotasks, TestBed, tick } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { PARSED_MOCK_RESPONSE, PEXELS_MOCK_RESPONSE } from '../mockdata/pexels-http-mockdata.spec';
 
+import { PARSED_MOCK_RESPONSE, PEXELS_MOCK_RESPONSE } from '../mockdata/pexels-http-mockdata.spec';
 import { PexelsHttpService } from './pexels-http.service';
 
 describe('PexelsHttpService', () => {
