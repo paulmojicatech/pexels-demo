@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { PhotoViewerComponent } from '../components/photo-viewer/photo-viewer.component';
 import { AppViewModel, Photo } from '../models/app.interface';
 import { PexelsHttpService } from '../services/pexels-http.service';
-import { TableColumnMetadata, TableMetadata, TableRowDataType, TableRowMetadata } from '../shared-components/table/models/table.interface';
+import { TableColumnMetadata, TableMetadata, TableRowDataType } from '../shared-components/table/models/table.interface';
 
 @Injectable()
 export class AppStateService {
