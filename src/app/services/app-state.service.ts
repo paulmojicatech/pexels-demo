@@ -71,11 +71,6 @@ export class AppStateService {
       ).subscribe((photosResp) => {
         const udpatedTableMetadata = this.createTableMetadata(photosResp.photos);
         const updatedPhotos = photos.concat(photosResp.photos);
-        const duplicates = updatedPhotos.filter((photo, index) => {
-          const photoIndex = updatedPhotos.findIndex(photoCopy => photoCopy.id === photo.id);
-          return photoIndex !== index;
-        });
-        console.log('DUPES', duplicates);
         this._viewModelSub$.next({
           ...currentState,
           photos: updatedPhotos, 
