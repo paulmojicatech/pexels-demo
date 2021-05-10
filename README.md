@@ -4,12 +4,12 @@ This is a demo application to show how to implement an Angular application to fo
 ## Components
 
 **App Component**
-This is a functional component.  We a localized state service that builds the view model of the data that  it and its child components need.  It also listens to outputs from its children and calls the localized service to perform the business logic needed.
+This is a functional component.  We inject a localized state service that builds the view model of the data that  it and its child components need.  It also listens to outputs from its children and calls the localized service to perform the business logic needed.
 
 We also use the Angular CDK to implement a virtual / infinite scroll mechanism that we fetch pictures from the Pexels API via HTTP only when needed.  The localized service is responsible for making that API call.
 
 **Search Bar:**
-This is is a reusable component that is application independent.  It is a presentational component that outputs an event when to the app component when a user types in the search field.
+This is a reusable component that is application independent.  It is a presentational component that outputs an event when to the app component when a user types in the search field.
 
 **Photo Viewer Component**
 This is a simple component that is the ComponentRef for the Angular Material dialog component.  This has displays the selected photo in a larger format and also displays the photographer of the photo.

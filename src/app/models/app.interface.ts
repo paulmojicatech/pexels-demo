@@ -7,6 +7,7 @@ export interface AppViewModel {
     photos: Photo[];
     totalResults: number;
     nextPageUrl: string;
+    isLoading: boolean;
 }
 
 export interface PexelsApiResponse {

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, EMPTY, Observable } from 'rxjs';
 import { catchError, startWith } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { PhotoViewerComponent } from '../components/photo-viewer/photo-viewer.component';
 
 import { AppViewModel, Photo } from '../models/app.interface';
@@ -18,7 +19,8 @@ export class AppStateService {
     photos: [],
     currentPage: 0,
     nextPageUrl: '',
-    totalResults: 0
+    totalResults: 0,
+    isLoading: false
   };
 
   private _viewModelSub$ = new BehaviorSubject<AppViewModel>(this.INITIAL_STATE);
@@ -58,8 +60,12 @@ export class AppStateService {
 
   dispatchFetch(): void {
     const currentState = this._viewModelSub$.getValue();
-    const { currentPage, nextPageUrl, searchQuery, photos } = currentState;
-    if (!!nextPageUrl) {
+    const { currentPage, nextPageUrl, searchQuery, photos, isLoading } = currentState;
+    if (!!nextPageUrl && !isLoading) {
+      this._viewModelSub$.next({
+        ...currentState,
+        isLoading: true
+      });
       this._pexelsHttpSvc.fetchPhotos(currentPage, searchQuery).pipe(
         catchError(err => this.handleError(err))
       ).subscribe((photosResp) => {
@@ -70,7 +76,8 @@ export class AppStateService {
           photos: updatedPhotos, 
           nextPageUrl: photosResp.nextPageUrl, 
           currentPage: photosResp.currentPage + 1,
-          tableMetadata: udpatedTableMetadata
+          tableMetadata: udpatedTableMetadata,
+          isLoading: false
         });
       });
     }
